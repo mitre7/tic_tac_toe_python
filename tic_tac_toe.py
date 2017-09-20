@@ -24,10 +24,10 @@ def select_symbol(n1, n2):
     
     user_symbol = input(n1 + " please select your symbol (X or O)\n")
     
-    while user_symbol != 'X' and user_symbol != 'O':
+    while user_symbol.upper() != 'X' and user_symbol.upper() != 'O':
         user_symbol = input("Invalid symbol. Type again X or O \n")
     
-    if user_symbol == 'X':
+    if user_symbol.upper() == 'X':
         print(n1 + ": X \n" + n2 + ": O")
         return ('X','O')
     else:
@@ -40,10 +40,10 @@ def has_board_empty_place(board):
 def place_marker(board,marker):
     if has_board_empty_place(board):
         position = input("Where do you want to place your marker?\n")
-        while int(position) not in range(1,10) or board[int(position) - 1] != ' ':
+        while position not in '1 2 3 4 5 6 7 8 9'.split() or board[int(position) - 1] != ' ':
             position = input("Invalid number. Please type again\n")
         
-        board[int(position) - 1] = marker  
+        board[int(position) - 1] = marker   
 
 def is_game_over(board,marker):
     if (board[0] == board[4] == board[8] == marker) or (board[1] == board[4] == board[7] == marker) or (board[2] == board[4] == board[6] == marker) or (board[3] == board[4] == board[5] == marker) or (board[0] == board[1] == board[2] == marker) or (board[0] == board[3] == board[6] == marker) or (board[2] == board[5] == board[8] == marker) or (board[6] == board[7] == board[8] == marker):
